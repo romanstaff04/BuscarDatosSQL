@@ -1,19 +1,19 @@
-# 🧭 Buscador de Piezas - Ocasa
+## 🧭 Buscador de Piezas
 
 Aplicación de escritorio desarrollada en **Python + Tkinter** que permite buscar información de piezas o pedidos en la base de datos **Azure SQL Server** de Ocasa.  
 Los resultados se exportan automáticamente a **Excel** y se abren al finalizar la búsqueda.
 
 ---
 
-## ⚙️ Funcionalidades principales
+### ⚙️ Funcionalidades principales
 
-### 🔐 Conexión segura a SQL Server
+#### 🔐 Conexión segura a SQL Server
 - Se conecta de forma segura a **Azure SQL** mediante `pyodbc`.
 - Las credenciales se gestionan con **keyring**, evitando exponer la contraseña en el código fuente.
 
 ---
 
-### 🧭 Búsqueda de piezas
+#### 🧭 Búsqueda de piezas
 - El usuario ingresa uno o varios números de **equipo/pedido**, separados por coma.
 - El sistema consulta dinámicamente las tablas:
   - `DW.Fact_Archivo_Ruteo`
@@ -31,13 +31,13 @@ Los resultados se exportan automáticamente a **Excel** y se abren al finalizar 
 
 ---
 
-### 📊 Exportación automática a Excel
+#### 📊 Exportación automática a Excel
 - Los resultados se guardan en **`resultados_Pieza_Buscada.xlsx`**.
 - El archivo se abre automáticamente al finalizar (`os.startfile()`).
 
 ---
 
-### 🖥️ Interfaz gráfica intuitiva
+#### 🖥️ Interfaz gráfica intuitiva
 Desarrollada con **Tkinter** y **Pillow**:
 
 - Campo para ingresar las piezas.  
@@ -48,12 +48,12 @@ Desarrollada con **Tkinter** y **Pillow**:
 
 ---
 
-### ⚡ Rendimiento fluido
+#### ⚡ Rendimiento fluido
 - La consulta SQL se ejecuta en **un hilo separado** (`threading.Thread`), evitando que la interfaz se congele mientras se realiza la búsqueda.
 
 ---
 
-## 🧩 Requisitos
+### 🧩 Requisitos
 
 - Python 3.9 o superior  
 - Librerías necesarias:
