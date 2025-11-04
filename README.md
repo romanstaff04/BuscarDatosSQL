@@ -33,7 +33,7 @@ Los resultados se exportan automáticamente a **Excel** y se abren al finalizar 
 
 #### 📊 Exportación automática a Excel
 - Los resultados se guardan en **`resultados_Pieza_Buscada.xlsx`**.
-- El archivo se abre automáticamente al finalizar (`os.startfile()`).
+- El archivo se abre automáticamente al finalizar
 
 ---
 
@@ -45,11 +45,6 @@ Desarrollada con **Tkinter** y **Pillow**:
 - **Barra de progreso animada** mientras se ejecuta la consulta.  
 - **Mensajes de estado** informativos (“Buscando…”, “✅ Completado”, “❌ Error”).  
 - Logo de **Ocasa** en la parte superior.  
-
----
-
-#### ⚡ Rendimiento fluido
-- La consulta SQL se ejecuta en **un hilo separado** (`threading.Thread`), evitando que la interfaz se congele mientras se realiza la búsqueda.
 
 ---
 
