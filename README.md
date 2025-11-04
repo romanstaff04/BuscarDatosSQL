@@ -1,55 +1,61 @@
-⚙️ Funciones principales del código
+# 🧭 Buscador de Piezas - Ocasa
 
-🔐 Conexión segura a SQL Server
+Aplicación de escritorio desarrollada en **Python + Tkinter** que permite buscar información de piezas o pedidos en la base de datos **Azure SQL Server** de Ocasa.  
+Los resultados se exportan automáticamente a **Excel** y se abren al finalizar la búsqueda.
 
-Se conecta a la base de datos en AZURE SQL:
+---
 
-🧭 Búsqueda de piezas
+## ⚙️ Funcionalidades principales
 
-El usuario ingresa uno o varios números de equipo o pedido (separados por coma).
+### 🔐 Conexión segura a SQL Server
+- Se conecta de forma segura a **Azure SQL** mediante `pyodbc`.
+- Las credenciales se gestionan con **keyring**, evitando exponer la contraseña en el código fuente.
 
-Se ejecuta una consulta SQL dinámica que busca esos números en las tablas:
+---
 
-DW.Fact_Archivo_Ruteo
+### 🧭 Búsqueda de piezas
+- El usuario ingresa uno o varios números de **equipo/pedido**, separados por coma.
+- El sistema consulta dinámicamente las tablas:
+  - `DW.Fact_Archivo_Ruteo`
+  - `DW.Fact_Ruteo_Planificacion_Rutas`
+- Devuelve información detallada:
+  - Jornada  
+  - Equipo  
+  - Ruta asignada  
+  - Cliente  
+  - Dirección  
+  - Centro (IATA y Sucursal)  
+  - Latitud / Longitud  
+  - Fechas de Programación y Despacho  
+  - Ruteador
 
-DW.Fact_Ruteo_Planificacion_Rutas
+---
 
-El resultado contiene datos como:
+### 📊 Exportación automática a Excel
+- Los resultados se guardan en **`resultados_Pieza_Buscada.xlsx`**.
+- El archivo se abre automáticamente al finalizar (`os.startfile()`).
 
-Jornada, equipo, ruta asignada, cliente, dirección, centro, latitud/longitud, fechas y ruteador.
+---
 
-📊 Exportación automática a Excel
+### 🖥️ Interfaz gráfica intuitiva
+Desarrollada con **Tkinter** y **Pillow**:
 
-Los resultados se guardan en un archivo llamado resultados_Pieza_Buscada.xlsx.
+- Campo para ingresar las piezas.  
+- Botón **“🔍 Buscar”**.  
+- **Barra de progreso animada** mientras se ejecuta la consulta.  
+- **Mensajes de estado** informativos (“Buscando…”, “✅ Completado”, “❌ Error”).  
+- Logo de **Ocasa** en la parte superior.  
 
-Se abre automáticamente al finalizar (os.startfile()).
+---
 
-🖥️ Interfaz gráfica (Tkinter)
+### ⚡ Rendimiento fluido
+- La consulta SQL se ejecuta en **un hilo separado** (`threading.Thread`), evitando que la interfaz se congele mientras se realiza la búsqueda.
 
-Permite al usuario interactuar fácilmente:
+---
 
-Campo para ingresar piezas.
+## 🧩 Requisitos
 
-Botón “🔍 Buscar”.
-
-Barra de progreso animada.
-
-Mensajes de estado (por ejemplo, “Buscando datos…” o “✅ Búsqueda completada”).
-
-Imagen con el logo de Ocasa.
-
-⚡ Ejecución en hilo separado
-
-Usa threading.Thread para que la búsqueda SQL se ejecute en segundo plano, evitando que la interfaz se congele mientras se consulta la base.
-
-💼 En resumen:
-
-El programa es un buscador gráfico de piezas/pedidos, conectado a la base de datos de Ocasa, que permite:
-
-Buscar múltiples piezas al mismo tiempo.
-
-Obtener información detallada desde SQL Server.
-
-Exportar los resultados automáticamente a Excel.
-
-Mostrar el progreso visualmente y mantener una experiencia fluida para el usuario.
+- Python 3.9 o superior  
+- Librerías necesarias:
+  ```bash
+  pip install pandas pyodbc pillow keyring openpyxl
