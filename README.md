@@ -2,11 +2,7 @@
 
 🔐 Conexión segura a SQL Server
 
-Se conecta a la base de datos en Azure SQL:
-serverdb-bi-prd.database.windows.net / db01-bi-prd
-
-Usa el usuario "Operaciones" y obtiene la contraseña desde keyring, por lo que no se guarda texto plano en el código.
-Esto mejora la seguridad y evita exponer credenciales.
+Se conecta a la base de datos en AZURE SQL:
 
 🧭 Búsqueda de piezas
 
